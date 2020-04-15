@@ -719,6 +719,10 @@ class Render extends Admin_Init {
 		$id   = $this->get_the_real_ID();
 		$post = \get_post( $id );
 
+		if (empty($post)) {
+			return '';
+		}
+		
 		$post_date_gmt = $post->post_date_gmt;
 
 		if ( '0000-00-00 00:00:00' === $post_date_gmt )
@@ -762,8 +766,12 @@ class Render extends Admin_Init {
 			return '';
 
 		$id = $this->get_the_real_ID();
-
 		$post              = \get_post( $id );
+
+		if (empty($post)) {
+			return '';
+		}
+		
 		$post_modified_gmt = $post->post_modified_gmt;
 
 		if ( '0000-00-00 00:00:00' === $post_modified_gmt )
